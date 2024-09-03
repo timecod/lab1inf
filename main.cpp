@@ -22,14 +22,14 @@ double get_time() {
 }
 
 int main() {
-  ofstream f("1.csv", ios::out);
+  // ofstream f("1.csv", ios::out);
   json data;
   ll n = 100;
   int *m = new int[n];
   for (int i = 0; i < n; ++i) {
     m[i] = rand<int>(0, 100);
   }
-  sortes::bubble<int>(m, n);
+  sortes::merge<int>(m, n);
   for (int i = 0; i < n; ++i)
     cout << m[i] << ' ';
   delete[] m;
