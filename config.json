@@ -1,9 +1,11 @@
 {
   "itemNumber": {
-    "start" : 1000,
-    "end": 10001,
-    "step": 1000
+    "start" : 100,
+    "end": 1001,
+    "step": 100
   },
-  "accuracy": 2,
-  "types": ["char", "int", "long", "short", "long long", "unsigned"]
+  "sorts": ["bubble", "insertion", "selection", "quick", "heap", "merge"],
+  "accuracy": 10,
+  "types": ["char", "short", "long", "int", "long long", "mystruct"],
+  "outputName": "outtype.json"
 }
