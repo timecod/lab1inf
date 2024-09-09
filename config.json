@@ -1,0 +1,9 @@
+{
+  "itemNumber": {
+    "start" : 1000,
+    "end": 10001,
+    "step": 1000
+  },
+  "accuracy": 2,
+  "types": ["char", "int", "long", "short", "long long", "unsigned"]
+}

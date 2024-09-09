@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 typedef long long ll;
 namespace sortes {
 // n2 sortes
@@ -21,7 +20,7 @@ template <typename T> void selection(T *m, ll n) {
   for (i = 0; i < n - 1; ++i) {
     ll jMin = i;
     for (j = i + 1; j < n; ++j)
-      if (m[j] < m[jMin])
+      if (m[jMin] > m[j])
         jMin = j;
 
     if (jMin != i) {
@@ -45,8 +44,6 @@ template <typename T> void insertion(T *m, ll n) {
 template <typename T> void merge(T *m, ll n) {
   if (n <= 1)
     return;
-  // if (m[0] == m[1] && n == 2)
-  //   return;
   merge<T>(m, n / 2);
   merge<T>(m + n / 2, n - n / 2);
   ll i = 0, j = n / 2;
@@ -54,7 +51,7 @@ template <typename T> void merge(T *m, ll n) {
   for (ll k = 0; k < n; ++k)
     r[k] = m[k];
   for (ll k = 0; k < n; ++k)
-    if (i < n / 2 && (j >= n || (r[i] <= r[j])))
+    if (i < n / 2 && (j >= n || (r[j] > r[i])))
       m[k] = r[i++];
     else
       m[k] = r[j++];
@@ -76,9 +73,9 @@ template <typename T> void heap(T *m, ll n) {
     f = true;
     while (2 * k + 1 < R && f) {
       ch = 2 * k + 1;
-      if (ch + 1 < R && m[ch] < m[ch + 1])
+      if (ch + 1 < R && m[ch + 1] > m[ch])
         ch++;
-      if (m[k] < m[ch]) {
+      if (m[ch] > m[k]) {
         T t = m[k];
         m[k] = m[ch];
         m[ch] = t;
@@ -95,7 +92,7 @@ template <typename T> void quick(T *m, ll n) {
   T pivot = m[n - 1];
   ll p = 0;
   for (ll j = 0; j < n - 1; ++j) {
-    if (m[j] <= pivot) {
+    if (pivot > m[j]) {
       T t = m[p];
       m[p] = m[j];
       m[j] = t;
